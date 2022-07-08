@@ -1,9 +1,9 @@
-const { db } = require("../utils/admin");
+const {db} = require("../utils/admin");
 
-exports.deliveries = async (req, res) => {
-  const deliveriesRef = db.collection('deliveries');
+exports.deliveries = async (req, res) => { // eslint-disable-line
+  const deliveriesRef = db.collection("deliveries");
 
-  try{
+  try {
     deliveriesRef.get().then((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -11,10 +11,10 @@ exports.deliveries = async (req, res) => {
       }));
       console.log(data);
       return res.status(201).json(data);
-    })
-  } catch(error) {
+    });
+  } catch (error) {
     return res
-    .status(500)
-    .json({ general: "Something went wrong, please try again" });
+        .status(500)
+        .json({general: "Something went wrong, please try again"});
   }
 };

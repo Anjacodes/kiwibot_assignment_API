@@ -1,4 +1,7 @@
 module.exports = {
+  "ignorePatterns": [
+    ".eslintrc.js"
+  ],
   root: true,
   env: {
     es6: true,
@@ -9,6 +12,9 @@ module.exports = {
     "google",
   ],
   rules: {
-    quotes: ["error", "double"],
+    quotes: ["error", "double"]
   },
+  "parserOptions": {
+    "ecmaVersion": 2021
+  }
 };

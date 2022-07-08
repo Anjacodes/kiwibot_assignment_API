@@ -1,26 +1,26 @@
 const functions = require("firebase-functions");
 
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 const app = express();
-app.use(cors({ origin: true }));
-app.use(express.json())
+app.use(cors({origin: true}));
+app.use(express.json());
 
-const { deliveries } = require('./routes/deliveries')
-const { create_delivery } = require('./routes/create_delivery')
-const { bots } = require('./routes/bots')
-const { create_bot } = require('./routes/create_bot');
-const { get_delivery_byID } = require('./routes/get_delivery_byID')
+const {deliveries} = require("./routes/deliveries");
+const {createDelivery} = require("./routes/createDelivery");
+const {bots} = require("./routes/bots");
+const {createBot} = require("./routes/createBot");
+const {getDeliveryByID} = require("./routes/getDeliveryByID");
 
-app.get('/hello-world', (req, res) => {
-  return res.status(200).send('Hello World!');
+app.get("/hello-world", (req, res) => {
+  return res.status(200).send("Hello World!");
 });
-app.get('/api/deliveries', deliveries)
-app.get('/api/deliveries/:delivery_id', get_delivery_byID)
-app.post('/api/create_delivery', create_delivery)
+app.get("/api/deliveries", deliveries);
+app.get("/api/deliveries/:delivery_id", getDeliveryByID);
+app.post("/api/create_delivery", createDelivery);
 
-app.get('/api/bots', bots)
-app.post('/api/create_bot', create_bot)
+app.get("/api/bots", bots);
+app.post("/api/create_bot", createBot);
 
 exports.app = functions.https.onRequest(app);
 

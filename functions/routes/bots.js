@@ -1,9 +1,9 @@
-const { db } = require("../utils/admin");
+const {db} = require("../utils/admin");
 
 exports.bots = async (req, res) => {
-  const botsRef = db.collection('bots');
+  const botsRef = db.collection("bots");
 
-  try{
+  try {
     botsRef.get().then((snapshot) => {
       const data = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -11,10 +11,10 @@ exports.bots = async (req, res) => {
       }));
       console.log(data);
       return res.status(201).json(data);
-    })
-  } catch(error) {
+    });
+  } catch (error) {
     return res
-    .status(500)
-    .json({ general: "Something went wrong, please try again" });
+        .status(500)
+        .json({general: "Something went wrong, please try again"});
   }
 };
